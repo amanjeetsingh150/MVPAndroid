@@ -21,5 +21,4 @@ public interface ApiInterface {
     @GET("top_rated")
     Observable<TopRatedPageResult> getTopRatedShows(@Query("api_key") String key);
 
-    //40f46bdfb85369f65325a2f2675ad187
 }
