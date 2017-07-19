@@ -5,10 +5,16 @@ import android.util.Log;
 
 import com.developers.televize.BuildConfig;
 import com.developers.televize.InitApplication;
+import com.developers.televize.Util.Constants;
 import com.developers.televize.model.CharacterModel.CharacterResult;
 import com.developers.televize.model.PopularTvModel.Result;
+import com.developers.televize.model.TopRatedTvModel.TopRatedResult;
 import com.developers.televize.model.TvShowDetailModel.TvShowDetailResult;
+import com.developers.televize.model.VideoResultModel.VideoIdResult;
+import com.developers.televize.model.VideoResultModel.VideoResults;
 import com.developers.televize.rest.ApiInterface;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -43,6 +49,11 @@ public class DetailPresenterImpl implements DetailPresenter {
     }
 
     @Override
+    public void fetchTopRatedResult(TopRatedResult ratedResult) {
+        detailView.showTopRatedDetails(ratedResult);
+    }
+
+    @Override
     public void getDetailForShow(int id) {
         apiInterface.getShowDetail(id, BuildConfig.TV_KEY)
                 .enqueue(new Callback<TvShowDetailResult>() {
@@ -69,6 +80,23 @@ public class DetailPresenterImpl implements DetailPresenter {
 
                     @Override
                     public void onFailure(Call<CharacterResult> call, Throwable t) {
+                        detailView.showError(t.getMessage());
+                    }
+                });
+    }
+
+    @Override
+    public void fetchVideos(int id) {
+        apiInterface.getVideo(id,BuildConfig.TV_KEY)
+                .enqueue(new Callback<VideoResults>() {
+                    @Override
+                    public void onResponse(Call<VideoResults> call, Response<VideoResults> response) {
+                        List<VideoIdResult> videoIdResultList=response.body().getResults();
+                        detailView.launchYoutubeActivity(videoIdResultList);
+                    }
+
+                    @Override
+                    public void onFailure(Call<VideoResults> call, Throwable t) {
                         detailView.showError(t.getMessage());
                     }
                 });

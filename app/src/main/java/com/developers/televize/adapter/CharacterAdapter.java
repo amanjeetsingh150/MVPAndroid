@@ -41,7 +41,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
     @Override
     public void onBindViewHolder(CharacterViewHolder holder, int position) {
         Picasso.with(context).load(Constants.BASE_URL_IMAGES+castList.get(position).getProfilePath()).into(holder.tvShow);
-        holder.tvTitle.setText(castList.get(position).getName());
+        holder.tvTitle.setText(castList.get(position).getName()+" as "+castList.get(position).getCharacter());
     }
 
     @Override

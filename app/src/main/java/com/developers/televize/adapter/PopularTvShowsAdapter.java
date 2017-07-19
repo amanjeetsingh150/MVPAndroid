@@ -14,6 +14,7 @@ import com.developers.televize.R;
 import com.developers.televize.Util.Constants;
 import com.developers.televize.Util.ViewCallBack;
 import com.developers.televize.fragments.PopularFragment.PopularTvView;
+import com.developers.televize.fragments.TopRatedTV.TopRatedView;
 import com.developers.televize.model.PopularTvModel.Result;
 import com.developers.televize.ui.DetailActivity.DetailActivity;
 import com.google.gson.Gson;
@@ -32,8 +33,6 @@ public class PopularTvShowsAdapter extends RecyclerView.Adapter<PopularTvShowsAd
 
     private Context context;
     private List<Result> results;
-    private Intent intent;
-    private Gson gson;
     private PopularTvView popularTvView;
 
 
@@ -69,6 +68,11 @@ public class PopularTvShowsAdapter extends RecyclerView.Adapter<PopularTvShowsAd
     @Override
     public void setPopularTvView(PopularTvView popularTvView) {
         this.popularTvView = popularTvView;
+    }
+
+    @Override
+    public void setTopRatedTvView(TopRatedView view) {
+
     }
 
     public class PopularViewHolder extends RecyclerView.ViewHolder {

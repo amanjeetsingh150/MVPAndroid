@@ -2,7 +2,9 @@ package com.developers.televize.ui.DetailActivity;
 
 import com.developers.televize.model.CharacterModel.Cast;
 import com.developers.televize.model.PopularTvModel.Result;
+import com.developers.televize.model.TopRatedTvModel.TopRatedResult;
 import com.developers.televize.model.TvShowDetailModel.TvShowDetailResult;
+import com.developers.televize.model.VideoResultModel.VideoIdResult;
 
 import java.util.List;
 
@@ -18,5 +20,9 @@ public interface DetailView {
     void showDetailOfShows(TvShowDetailResult tvShowDetailResult);
 
     void showCharacters(List<Cast> castList);
+
+    void showTopRatedDetails(TopRatedResult result);
+
+    void launchYoutubeActivity(List<VideoIdResult> videoIdResults);
 
 }

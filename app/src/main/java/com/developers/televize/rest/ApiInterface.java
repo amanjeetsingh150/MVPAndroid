@@ -4,6 +4,7 @@ import com.developers.televize.model.CharacterModel.CharacterResult;
 import com.developers.televize.model.PopularTvModel.PageResult;
 import com.developers.televize.model.TopRatedTvModel.TopRatedPageResult;
 import com.developers.televize.model.TvShowDetailModel.TvShowDetailResult;
+import com.developers.televize.model.VideoResultModel.VideoResults;
 
 
 import io.reactivex.Observable;
@@ -25,9 +26,13 @@ public interface ApiInterface {
     Observable<TopRatedPageResult> getTopRatedShows(@Query("api_key") String key);
 
     @GET("{tv_id}")
-    Call<TvShowDetailResult> getShowDetail(@Path("tv_id") int tvId,@Query("api_key") String key);
+    Call<TvShowDetailResult> getShowDetail(@Path("tv_id") int tvId, @Query("api_key") String key);
 
     @GET("{tv_id}/credits")
-    Call<CharacterResult> getCrew(@Path("tv_id") int tvId,@Query("api_key") String key);
+    Call<CharacterResult> getCrew(@Path("tv_id") int tvId, @Query("api_key") String key);
+
+    @GET("{tv_id}/videos")
+    Call<VideoResults> getVideo(@Path("tv_id") int tvId, @Query("api_key") String key);
+
 
 }

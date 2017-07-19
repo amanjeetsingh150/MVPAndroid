@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -24,7 +23,9 @@
         android:ellipsize="end"
         android:maxLength="30"
         android:maxLines="1"
-        android:layout_toRightOf="@+id/imageview_tv_show"/>
+        android:textColor="@android:color/black"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/imageview_tv_show" />
 
 
 

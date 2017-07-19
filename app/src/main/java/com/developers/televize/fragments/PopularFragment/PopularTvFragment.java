@@ -112,6 +112,8 @@ public class PopularTvFragment extends Fragment implements PopularTvView {
         gson = new Gson();
         intent = new Intent(getActivity(), DetailActivity.class);
         intent.putExtra(Constants.POPULAR_TV_KEY, gson.toJson(result));
+        String key=Constants.POPULAR_KEY;
+        intent.putExtra("KEY",key);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Pair<View, String> p1 = Pair.create((View)poster, getString(R.string.popular_tv_image_transition));
             Pair<View, String> p2 = Pair.create((View)title, getString(R.string.popular_tv_title_transition));
