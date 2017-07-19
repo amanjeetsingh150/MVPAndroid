@@ -6,6 +6,8 @@ import com.developers.televize.fragments.PopularFragment.PopularTvPresenter;
 import com.developers.televize.fragments.PopularFragment.PopularTvPresenterImpl;
 import com.developers.televize.fragments.TopRatedTV.TopRatedPresenter;
 import com.developers.televize.fragments.TopRatedTV.TopRatedPresenterImpl;
+import com.developers.televize.ui.DetailActivity.DetailPresenter;
+import com.developers.televize.ui.DetailActivity.DetailPresenterImpl;
 import com.developers.televize.ui.TvActivity.MainPresenter;
 import com.developers.televize.ui.TvActivity.MainPresenterImpl;
 
@@ -36,5 +38,11 @@ public class PresenterModule {
     @Singleton
     protected TopRatedPresenter providesTopRatedPresenter(Context context){
         return new TopRatedPresenterImpl(context);
+    }
+
+    @Provides
+    @Singleton
+    protected DetailPresenter providesDetailActivityPresenter(Context context){
+        return new DetailPresenterImpl(context);
     }
 }

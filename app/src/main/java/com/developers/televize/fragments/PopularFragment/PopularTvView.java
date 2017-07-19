@@ -1,5 +1,8 @@
 package com.developers.televize.fragments.PopularFragment;
 
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import com.developers.televize.model.PopularTvModel.Result;
 
 import java.util.List;
@@ -16,4 +19,6 @@ public interface PopularTvView {
     void showData(List<Result> body);
 
     void showError(String error);
+
+    void launchDetailActivity(Result result, ImageView poster, TextView popularTitle);
 }

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.developers.televize.R;
+import com.developers.televize.Util.Constants;
 import com.developers.televize.model.TopRatedTvModel.TopRatedResult;
 import com.squareup.picasso.Picasso;
 
@@ -21,26 +22,25 @@ import butterknife.ButterKnife;
  * Created by Amanjeet Singh on 19/7/17.
  */
 
-public class TopRatedTvAdapter extends RecyclerView.Adapter<TopRatedTvAdapter.TopRatedRecyclerViewHolder>{
+public class TopRatedTvAdapter extends RecyclerView.Adapter<TopRatedTvAdapter.TopRatedRecyclerViewHolder> {
 
     private Context context;
     private List<TopRatedResult> topRatedResults;
-    private static final String BASE_URL_IMAGES="http://image.tmdb.org/t/p/w185";
 
-    public TopRatedTvAdapter(Context context, List<TopRatedResult> topRatedResults){
-        this.context=context;
-        this.topRatedResults=topRatedResults;
+    public TopRatedTvAdapter(Context context, List<TopRatedResult> topRatedResults) {
+        this.context = context;
+        this.topRatedResults = topRatedResults;
     }
 
     @Override
     public TopRatedRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v=LayoutInflater.from(context).inflate(R.layout.top_list_row,parent,false);
+        View v = LayoutInflater.from(context).inflate(R.layout.top_list_row, parent, false);
         return new TopRatedRecyclerViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(TopRatedRecyclerViewHolder holder, int position) {
-        Picasso.with(context).load(BASE_URL_IMAGES+topRatedResults.get(position).getBackdropPath()).into(holder.topRatedBanner);
+        Picasso.with(context).load(Constants.BASE_URL_IMAGES + topRatedResults.get(position).getBackdropPath()).into(holder.topRatedBanner);
         holder.topRatedTitle.setText(topRatedResults.get(position).getName());
     }
 

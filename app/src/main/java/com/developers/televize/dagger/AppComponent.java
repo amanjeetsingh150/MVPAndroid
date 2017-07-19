@@ -5,6 +5,8 @@ import com.developers.televize.fragments.PopularFragment.PopularTvFragment;
 import com.developers.televize.fragments.PopularFragment.PopularTvPresenterImpl;
 import com.developers.televize.fragments.TopRatedTV.TopRatedFragment;
 import com.developers.televize.fragments.TopRatedTV.TopRatedPresenterImpl;
+import com.developers.televize.ui.DetailActivity.DetailActivity;
+import com.developers.televize.ui.DetailActivity.DetailPresenterImpl;
 import com.developers.televize.ui.TvActivity.MainActivity;
 import com.developers.televize.ui.TvActivity.MainPresenterImpl;
 
@@ -33,4 +35,8 @@ public interface AppComponent {
     void inject(TopRatedFragment target);
 
     void inject(TopRatedPresenterImpl target);
+
+    void inject(DetailActivity target);
+
+    void inject(DetailPresenterImpl target);
 }

@@ -23,7 +23,8 @@
                 android:id="@+id/tv_image_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:transitionName="tv_show"/>
 
             <View
                 android:id="@+id/black_view"
@@ -37,6 +38,7 @@
                 android:id="@+id/tv_title_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:transitionName="tv_title_transition"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
                 android:layout_margin="5dp"
