@@ -21,4 +21,6 @@ public interface PopularTvView {
     void showError(String error);
 
     void launchDetailActivity(Result result, ImageView poster, TextView popularTitle);
+
+    void launchShareActivity(String popularity);
 }

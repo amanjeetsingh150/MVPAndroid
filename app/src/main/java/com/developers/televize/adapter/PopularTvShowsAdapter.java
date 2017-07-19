@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -58,6 +59,12 @@ public class PopularTvShowsAdapter extends RecyclerView.Adapter<PopularTvShowsAd
                 popularTvView.launchDetailActivity(results.get(position),holder.tvPoster,holder.tvTitle);
             }
         });
+        holder.shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popularTvView.launchShareActivity("LOOK at "+results.get(position).getName()+" with "+results.get(position).getPopularity()+" popularity.");
+            }
+        });
     }
 
     @Override
@@ -83,6 +90,8 @@ public class PopularTvShowsAdapter extends RecyclerView.Adapter<PopularTvShowsAd
         CardView cardView;
         @BindView(R.id.tv_title_textview)
         TextView tvTitle;
+        @BindView(R.id.share_button)
+        ImageButton shareButton;
 
         public PopularViewHolder(View itemView) {
             super(itemView);

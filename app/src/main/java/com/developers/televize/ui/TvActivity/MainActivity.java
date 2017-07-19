@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements MainView{
         presenter.setView(this);
         presenter.loadTabs();
         tvPagerAdapter=new TvPagerAdapter(getSupportFragmentManager());
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         viewPager.setAdapter(tvPagerAdapter);
     }
 

@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -55,6 +56,12 @@ public class TopRatedTvAdapter extends RecyclerView.Adapter<TopRatedTvAdapter.To
                 topRatedView.launchDetailActivity(topRatedResults.get(position),holder.topRatedBanner,holder.topRatedTitle);
             }
         });
+        holder.shareRatedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                topRatedView.launchShareActivity("LOOK at "+topRatedResults.get(position).getName()+" with "+topRatedResults.get(position).getPopularity()+" popularity.");
+            }
+        });
     }
 
     @Override
@@ -80,6 +87,8 @@ public class TopRatedTvAdapter extends RecyclerView.Adapter<TopRatedTvAdapter.To
         TextView topRatedTitle;
         @BindView(R.id.top_rated_card_view)
         CardView topRatedCard;
+        @BindView(R.id.share_rated_btn)
+        ImageButton shareRatedButton;
 
         public TopRatedRecyclerViewHolder(View itemView) {
             super(itemView);

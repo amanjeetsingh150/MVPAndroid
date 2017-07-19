@@ -19,4 +19,6 @@ public interface TopRatedView {
 
     void launchDetailActivity(TopRatedResult topRatedResult, ImageView topRatedBanner, TextView topRatedTitle);
 
+    void launchShareActivity(String popularity);
+
 }

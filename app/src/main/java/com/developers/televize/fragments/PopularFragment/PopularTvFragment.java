@@ -126,4 +126,13 @@ public class PopularTvFragment extends Fragment implements PopularTvView {
         }
     }
 
+    @Override
+    public void launchShareActivity(String popularity) {
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.setAction(Intent.ACTION_SEND);
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, popularity);
+        startActivity(sharingIntent);
+    }
+
 }
