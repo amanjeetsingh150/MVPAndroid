@@ -67,6 +67,8 @@ public class TopRatedPresenterImpl implements TopRatedPresenter {
 
                     @Override
                     public void onComplete() {
+                        if (!disposable.isDisposed())
+                            disposable.dispose();
                     }
                 });
     }
