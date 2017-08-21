@@ -7,6 +7,7 @@ import com.developers.televize.data.model.TvShowDetailModel.TvShowDetailResult;
 import com.developers.televize.data.model.VideoResultModel.VideoResults;
 
 import io.reactivex.Observable;
+import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -29,5 +30,5 @@ public interface ApiInterface {
     Observable<CharacterResult> getCrew(@Path("tv_id") int tvId, @Query("api_key") String key);
 
     @GET("{tv_id}/videos")
-    Observable<VideoResults> getVideo(@Path("tv_id") int tvId, @Query("api_key") String key);
+    Call<VideoResults> getVideo(@Path("tv_id") int tvId, @Query("api_key") String key);
 }

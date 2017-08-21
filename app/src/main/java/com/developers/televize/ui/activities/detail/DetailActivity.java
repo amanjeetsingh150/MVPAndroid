@@ -179,6 +179,7 @@ public class DetailActivity extends BaseActivity implements DetailView {
             address=Constants.YOUTUBE_BASE_URL+v.getKey();
             break;
         }
+        Log.d("TAG","Launching: "+address);
         if(address!=null){
             Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse(address));
             startActivity(intent);

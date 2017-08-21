@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.Observable;
+import retrofit2.Call;
 
 /**
  * Created by Amanjeet Singh on 21/8/17.
@@ -40,7 +41,7 @@ public class ApiHelper {
         return apiInterface.getCrew(id, key);
     }
 
-    public Observable<VideoResults> getVideos(int id, String key) {
+    public Call<VideoResults> getVideos(int id, String key) {
         return apiInterface.getVideo(id, key);
     }
 
