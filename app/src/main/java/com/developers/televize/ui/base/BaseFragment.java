@@ -3,6 +3,7 @@ package com.developers.televize.ui.base;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.developers.televize.di.component.ActivityComponent;
 
@@ -17,7 +18,7 @@ public class BaseFragment extends Fragment implements BaseMvpView {
 
     @Override
     public void showError(String error) {
-
+        Toast.makeText(getActivity(),error,Toast.LENGTH_SHORT).show();
     }
 
     @Override

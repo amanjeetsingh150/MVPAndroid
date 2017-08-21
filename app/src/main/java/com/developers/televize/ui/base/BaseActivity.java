@@ -3,6 +3,7 @@ package com.developers.televize.ui.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.developers.televize.InitApplication;
 import com.developers.televize.di.component.ActivityComponent;
@@ -39,7 +40,7 @@ public class BaseActivity extends AppCompatActivity implements BaseMvpView{
 
     @Override
     public void showError(String error) {
-
+        Toast.makeText(getApplicationContext(),error,Toast.LENGTH_SHORT).show();
     }
 
     @Override
