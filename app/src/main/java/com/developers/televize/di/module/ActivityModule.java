@@ -11,6 +11,9 @@ import com.developers.televize.ui.activities.main.MainView;
 import com.developers.televize.ui.fragments.PopularTv.PopularTvMvpPresenter;
 import com.developers.televize.ui.fragments.PopularTv.PopularTvPresenter;
 import com.developers.televize.ui.fragments.PopularTv.PopularTvView;
+import com.developers.televize.ui.fragments.TopRatedTv.TopRatedTvMvpPresenter;
+import com.developers.televize.ui.fragments.TopRatedTv.TopRatedTvPresenter;
+import com.developers.televize.ui.fragments.TopRatedTv.TopRatedTvView;
 
 import dagger.Module;
 import dagger.Provides;
@@ -47,5 +50,11 @@ public class ActivityModule {
     @Provides
     PopularTvMvpPresenter<PopularTvView> providesPopularTvPresenter(PopularTvPresenter<PopularTvView> popularTvPresenter) {
         return popularTvPresenter;
+    }
+
+    @PerActivity
+    @Provides
+    TopRatedTvMvpPresenter<TopRatedTvView> provideTopRatedPresenter(TopRatedTvPresenter<TopRatedTvView> topRatedTvPresenter) {
+        return topRatedTvPresenter;
     }
 }

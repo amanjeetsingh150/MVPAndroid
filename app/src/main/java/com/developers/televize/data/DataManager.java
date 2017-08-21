@@ -1,6 +1,7 @@
 package com.developers.televize.data;
 
 import com.developers.televize.data.model.PopularTvModel.PageResult;
+import com.developers.televize.data.model.TopRatedTvModel.TopRatedPageResult;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -20,7 +21,11 @@ public class DataManager {
         this.apiHelper = apiHelper;
     }
 
-    public Observable<PageResult> getPopularTv(String key){
+    public Observable<PageResult> getPopularTv(String key) {
         return apiHelper.getTvShows(key);
+    }
+
+    public Observable<TopRatedPageResult> getTopRatedTv(String key) {
+        return apiHelper.getTopRatedShows(key);
     }
 }
