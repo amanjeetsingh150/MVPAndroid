@@ -2,6 +2,7 @@ package com.developers.televize.di.component;
 
 import com.developers.televize.di.PerActivity;
 import com.developers.televize.di.module.ActivityModule;
+import com.developers.televize.ui.activities.detail.DetailActivity;
 import com.developers.televize.ui.activities.main.MainActivity;
 import com.developers.televize.ui.fragments.PopularTv.PopularTvFragment;
 import com.developers.televize.ui.fragments.TopRatedTv.TopRatedFragment;
@@ -19,4 +20,6 @@ public interface ActivityComponent {
     void inject(PopularTvFragment popularTvFragment);
 
     void inject(TopRatedFragment topRatedFragment);
+
+    void inject(DetailActivity detailActivity);
 }

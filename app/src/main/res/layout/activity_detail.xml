@@ -40,10 +40,10 @@
                 android:fitsSystemWindows="true" />
 
             <ImageView
+                android:id="@+id/button_video"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:id="@+id/button_video"
                 android:alpha="0.8"
                 android:src="@drawable/ic_play_circle_outline_white_48dp" />
 
@@ -142,7 +142,7 @@
                 android:id="@+id/crew_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp" />
+                android:layout_margin="15dp" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

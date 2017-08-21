@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.developers.televize.R;
 import com.developers.televize.data.model.PopularTvModel.Result;
 import com.developers.televize.ui.fragments.PopularTv.PopularTvView;
+import com.developers.televize.ui.fragments.TopRatedTv.TopRatedTvView;
 import com.developers.televize.util.Constants;
 import com.developers.televize.util.ViewCallBack;
 import com.squareup.picasso.Picasso;
@@ -71,6 +72,11 @@ public class PopularTvShowsAdapter extends RecyclerView.Adapter<PopularTvShowsAd
     @Override
     public void setPopularTvView(PopularTvView popularTvView) {
         this.popularTvView = popularTvView;
+    }
+
+    @Override
+    public void setTopRatedTvView(TopRatedTvView view) {
+
     }
 
     public class PopularViewHolder extends RecyclerView.ViewHolder {

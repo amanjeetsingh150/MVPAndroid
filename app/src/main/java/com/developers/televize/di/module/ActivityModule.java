@@ -5,6 +5,9 @@ import android.content.Context;
 
 import com.developers.televize.di.ActivityContext;
 import com.developers.televize.di.PerActivity;
+import com.developers.televize.ui.activities.detail.DetailMvpPresenter;
+import com.developers.televize.ui.activities.detail.DetailView;
+import com.developers.televize.ui.activities.detail.DetailsPresenter;
 import com.developers.televize.ui.activities.main.MainMvpPresenter;
 import com.developers.televize.ui.activities.main.MainPresenter;
 import com.developers.televize.ui.activities.main.MainView;
@@ -56,5 +59,11 @@ public class ActivityModule {
     @Provides
     TopRatedTvMvpPresenter<TopRatedTvView> provideTopRatedPresenter(TopRatedTvPresenter<TopRatedTvView> topRatedTvPresenter) {
         return topRatedTvPresenter;
+    }
+
+    @PerActivity
+    @Provides
+    DetailMvpPresenter<DetailView> provideDetailsPresenter(DetailsPresenter<DetailView> detailsPresenter){
+        return detailsPresenter;
     }
 }
