@@ -1,12 +1,11 @@
 package com.developers.televize;
 
 import android.app.Application;
+import android.content.Context;
 
-import com.developers.televize.dagger.AppComponent;
-import com.developers.televize.dagger.AppModule;
-import com.developers.televize.dagger.DaggerAppComponent;
-import com.developers.televize.dagger.NetModule;
-import com.developers.televize.dagger.PresenterModule;
+import com.developers.televize.di.component.ApplicationComponent;
+import com.developers.televize.di.component.DaggerApplicationComponent;
+import com.developers.televize.di.module.ApplicationModule;
 
 /**
  * Created by Amanjeet Singh on 16/7/17.
@@ -14,24 +13,19 @@ import com.developers.televize.dagger.PresenterModule;
 
 public class InitApplication extends Application {
 
-    private AppComponent appComponent;
+    ApplicationComponent applicationComponent;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        appComponent=initDagger(this);
+    public static InitApplication get(Context context) {
+        return (InitApplication) context.getApplicationContext();
     }
 
-    protected AppComponent initDagger(InitApplication application){
-        return DaggerAppComponent.builder()
-                .appModule(new AppModule(application))
-                .netModule(new NetModule())
-                .presenterModule(new PresenterModule())
-                .build();
-    }
-
-    public AppComponent getAppComponent(){
-        return appComponent;
+    public ApplicationComponent component() {
+        if (applicationComponent == null) {
+            applicationComponent = DaggerApplicationComponent.builder()
+                    .applicationModule(new ApplicationModule(this))
+                    .build();
+        }
+        return applicationComponent;
     }
 
 }

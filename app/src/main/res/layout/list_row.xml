@@ -60,6 +60,5 @@
             android:id="@+id/share_button"
             android:layout_marginLeft="5dp"
             android:src="@drawable/ic_share_black_24dp" />
-
     </LinearLayout>
 </LinearLayout>
