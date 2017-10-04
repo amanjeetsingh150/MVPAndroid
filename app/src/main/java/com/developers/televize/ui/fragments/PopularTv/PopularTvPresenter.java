@@ -34,8 +34,11 @@ public class PopularTvPresenter<V extends PopularTvView> extends BasePresenter<V
     }
 
     @Override
-    public void getPopularShowsApi() {
-        dataManager.getPopularTv(BuildConfig.TV_KEY)
+    public void getPopularShowsApi(int page) {
+        if (page > 1) {
+            getMVpView().showLoadMoreSpinner();
+        }
+        dataManager.getPopularTv(BuildConfig.TV_KEY, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<PageResult>() {
@@ -48,12 +51,14 @@ public class PopularTvPresenter<V extends PopularTvView> extends BasePresenter<V
                     @Override
                     public void onNext(PageResult value) {
                         resultList=value.getResults();
+                        getMVpView().hideLoadMoreSpinner();
                         getMVpView().showData(resultList);
                         getMVpView().hideLoading();
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        getMVpView().hideLoadMoreSpinner();
                         getMVpView().showError(e.getMessage());
                     }
 

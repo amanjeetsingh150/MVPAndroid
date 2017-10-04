@@ -8,6 +8,6 @@ import com.developers.televize.ui.base.Presenter;
 
 public interface TopRatedTvMvpPresenter<V extends TopRatedTvView> extends Presenter<V> {
 
-    void getTopRatedShows();
+    void getTopRatedShows(int page);
 
 }

@@ -25,12 +25,12 @@ public class ApiHelper {
         this.apiInterface = apiInterface;
     }
 
-    public Observable<PageResult> getTvShows(String key) {
-        return apiInterface.getTvShows(key);
+    public Observable<PageResult> getTvShows(String key, int page) {
+        return apiInterface.getTvShows(key, page);
     }
 
-    public Observable<TopRatedPageResult> getTopRatedShows(String key) {
-        return apiInterface.getTopRatedShows(key);
+    public Observable<TopRatedPageResult> getTopRatedShows(String key, int page) {
+        return apiInterface.getTopRatedShows(key, page);
     }
 
     public Observable<TvShowDetailResult> getDetails(int id, String key) {

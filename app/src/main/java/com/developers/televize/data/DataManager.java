@@ -25,12 +25,12 @@ public class DataManager {
         this.apiHelper = apiHelper;
     }
 
-    public Observable<PageResult> getPopularTv(String key) {
-        return apiHelper.getTvShows(key);
+    public Observable<PageResult> getPopularTv(String key, int page) {
+        return apiHelper.getTvShows(key, page);
     }
 
-    public Observable<TopRatedPageResult> getTopRatedTv(String key) {
-        return apiHelper.getTopRatedShows(key);
+    public Observable<TopRatedPageResult> getTopRatedTv(String key, int page) {
+        return apiHelper.getTopRatedShows(key, page);
     }
 
     public Observable<TvShowDetailResult> getTvDetail(int id, String key) {
