@@ -34,8 +34,11 @@ public class TopRatedTvPresenter<V extends TopRatedTvView> extends BasePresenter
     }
 
     @Override
-    public void getTopRatedShows() {
-        dataManager.getTopRatedTv(BuildConfig.TV_KEY)
+    public void getTopRatedShows(int page) {
+        if (page > 1) {
+            getMVpView().showLoadMoreSpinner();
+        }
+        dataManager.getTopRatedTv(BuildConfig.TV_KEY, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<TopRatedPageResult>() {
@@ -49,11 +52,13 @@ public class TopRatedTvPresenter<V extends TopRatedTvView> extends BasePresenter
                     @Override
                     public void onNext(TopRatedPageResult value) {
                         topRatedResultList=value.getResults();
+                        getMVpView().hideLoadMoreSpinner();
                         getMVpView().showTopRatedTv(topRatedResultList);
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        getMVpView().hideLoadMoreSpinner();
                         getMVpView().showError(e.getMessage());
                     }
 

@@ -21,6 +21,7 @@ import com.developers.televize.ui.activities.detail.DetailActivity;
 import com.developers.televize.ui.adapters.TopRatedTvAdapter;
 import com.developers.televize.ui.base.BaseFragment;
 import com.developers.televize.util.Constants;
+import com.developers.televize.util.PaginationScrollListener;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -35,6 +36,7 @@ import butterknife.ButterKnife;
  */
 public class TopRatedFragment extends BaseFragment implements TopRatedTvView {
 
+    private static final int START_PAGE = 1;
 
     @Inject
     TopRatedTvMvpPresenter<TopRatedTvView> topRatedTvMvpPresenter;
@@ -43,6 +45,8 @@ public class TopRatedFragment extends BaseFragment implements TopRatedTvView {
     private TopRatedTvAdapter topRatedTvAdapter;
     private Gson gson;
     private Intent intent;
+
+    private PaginationScrollListener scrollListener;
 
     public TopRatedFragment() {
         // Required empty public constructor
@@ -57,18 +61,30 @@ public class TopRatedFragment extends BaseFragment implements TopRatedTvView {
         getActivityComponent().inject(this);
         ButterKnife.bind(this, view);
         topRatedTvMvpPresenter.attachView(this);
-        topRatedTvMvpPresenter.getTopRatedShows();
+        topRatedTvMvpPresenter.getTopRatedShows(START_PAGE);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        topRatedRecyclerView.setLayoutManager(layoutManager);
+        topRatedTvAdapter = new TopRatedTvAdapter(getActivity());
+        topRatedRecyclerView.setAdapter(topRatedTvAdapter);
+        scrollListener = new PaginationScrollListener(layoutManager) {
+            @Override
+            public void onLoadMore(int current_page) {
+                fetchPageData(current_page);
+            }
+        };
+        topRatedRecyclerView.addOnScrollListener(scrollListener);
         return view;
+    }
+
+    private void fetchPageData(int currentPage) {
+        topRatedTvMvpPresenter.getTopRatedShows(currentPage);
     }
 
     @Override
     public void showTopRatedTv(List<TopRatedResult> topRatedResults) {
-        topRatedTvAdapter = new TopRatedTvAdapter(getActivity(), topRatedResults);
+        topRatedTvAdapter.addData(topRatedResults);
         topRatedTvAdapter.setTopRatedTvView(this);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        topRatedRecyclerView.setLayoutManager(layoutManager);
-        topRatedRecyclerView.setAdapter(topRatedTvAdapter);
     }
 
     @Override
@@ -91,10 +107,27 @@ public class TopRatedFragment extends BaseFragment implements TopRatedTvView {
 
     @Override
     public void launchShareActivity(String popularity) {
-        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
         sharingIntent.setAction(Intent.ACTION_SEND);
         sharingIntent.putExtra(Intent.EXTRA_TEXT, popularity);
         startActivity(sharingIntent);
+    }
+
+    @Override
+    public void showLoadMoreSpinner() {
+        topRatedRecyclerView.post(new Runnable() {
+            @Override
+            public void run() {
+                topRatedTvAdapter.addLoadingFooter();
+            }
+        });
+    }
+
+    @Override
+    public void hideLoadMoreSpinner() {
+        if (topRatedTvAdapter != null) {
+            topRatedTvAdapter.removeLoadingFooter();
+        }
     }
 }

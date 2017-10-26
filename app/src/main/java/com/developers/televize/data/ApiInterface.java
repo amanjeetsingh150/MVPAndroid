@@ -18,10 +18,10 @@ import retrofit2.http.Query;
 
 public interface ApiInterface {
     @GET("popular")
-    Observable<PageResult> getTvShows(@Query("api_key") String key);
+    Observable<PageResult> getTvShows(@Query("api_key") String key, @Query("page") int page);
 
     @GET("top_rated")
-    Observable<TopRatedPageResult> getTopRatedShows(@Query("api_key") String key);
+    Observable<TopRatedPageResult> getTopRatedShows(@Query("api_key") String key, @Query("page") int page);
 
     @GET("{tv_id}")
     Observable<TvShowDetailResult> getShowDetail(@Path("tv_id") int tvId, @Query("api_key") String key);

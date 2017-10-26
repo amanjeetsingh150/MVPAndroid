@@ -7,5 +7,5 @@ import com.developers.televize.ui.base.Presenter;
  */
 
 public interface PopularTvMvpPresenter<V extends PopularTvView> extends Presenter<V> {
-    void getPopularShowsApi();
+    void getPopularShowsApi(int page);
 }
